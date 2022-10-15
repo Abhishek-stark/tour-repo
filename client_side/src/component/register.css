@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* background-image: url('../../Images/Mountain\ Tour.jpg') no repeat; */
+}
+
+.register_form {
+    background-color: rgb(251, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    border-radius: 20px;
+    margin-top: 30%;
+    height: 500px;
+    width: 500px;
+}
+
+.register_form form input {
+    margin: 10px;
+    width: 400px;
+    height: 30px;
+    border: none;
+    background-color: aqua;
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+    font-size: 20px;
+    font-weight: 700;
+}

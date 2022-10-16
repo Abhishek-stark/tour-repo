@@ -1,32 +1,42 @@
-body {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    /* background-image: url('../../Images/Mountain\ Tour.jpg') no repeat; */
-}
-
 .register_form {
+    position: absolute;
     background-color: rgb(251, 255, 255);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center;
     align-items: center;
-    justify-items: center;
+    justify-items: center; */
     border-radius: 20px;
-    margin-top: 30%;
-    height: 500px;
-    width: 500px;
+    height: 330px;
+    width: 600px;
+    margin-top: 200px;
+    margin-left: 30%;
+    background-color: rgb(9, 81, 57);
 }
 
 .register_form form input {
     margin: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     width: 400px;
     height: 30px;
     border: none;
-    background-color: aqua;
+    /* background-color: rgb(30, 33, 54); */
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
     outline: none;
     font-size: 20px;
     font-weight: 700;
+}
+
+.register_btn {
+    background-color: aquamarine;
+    width: 27%;
+    margin-left: 25%;
+    height: 45px;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 0.8px;
+    background-color: rgb(243, 88, 5);
+    border-radius: 7px;
+    border: none;
 }

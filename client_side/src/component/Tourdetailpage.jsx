@@ -1,7 +1,8 @@
 import { React, useState } from 'react';
 
 import './tourdetail.css';
-
+import GradeIcon from '@mui/icons-material/Grade';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { loadStripe } from '@stripe/stripe-js';
 
 import axios from 'axios';
@@ -18,7 +19,7 @@ const Tourdetailpage = () => {
   });
 
   const { review, rating } = reviewdata;
-
+  var j = 1;
   const onchangereview = (e) => {
     e.preventDefault();
     setreviewdata((prevreview) => ({
@@ -177,6 +178,13 @@ const Tourdetailpage = () => {
                   <h3>{user.name}</h3>
                   <p>{review}</p>
                   <span>AverageRating: {tourdetail.tour.ratingsAverage}</span>
+                  <div className="rating_star">
+                    <GradeIcon color="warning" />
+                    <GradeIcon color="warning" />
+                    <GradeIcon color="warning" />
+                    <GradeIcon color="warning" />
+                    <GradeIcon color="warning" />
+                  </div>
                 </div>
               );
             })}

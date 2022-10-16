@@ -8,11 +8,6 @@ body {
     box-sizing: border-box;
 }
 
-
-/* .container {
-    background-color: rgb(7, 6, 6);
-} */
-
 .detail_container {
     min-height: auto;
     max-height: 100%;
@@ -23,20 +18,13 @@ body {
     border-radius: 8px;
 }
 
-
-/* .detail_cover {
-    background-color: #777;
-} */
-
 .image_cover_class {
     margin: 2% 2%;
-    /* padding-right: 10px; */
     overflow: hidden;
     min-height: 400px;
     max-height: 700px;
     width: 100%;
     transform: skewY( -1deg);
-    /* border-top-right-radius: 25px; */
     transform-origin: 2%;
 }
 
@@ -59,7 +47,6 @@ body {
     height: auto;
     width: 100%;
     padding: 0px 10px;
-    /* background-color: aqua; */
     justify-content: center;
     align-items: center;
     margin: 20px 15px;
@@ -69,16 +56,13 @@ body {
 .tour_images {
     max-height: 600px;
     border-radius: 10px;
-    width: 450px;
+    width: 460px;
     margin: 10px 10px;
-    /* object-fit: cover; */
 }
 
 .book_tour_button {
     width: 70%;
-    /* height: 90px; */
     min-height: 110px;
-    /* margin: auto; */
     margin: 10px 10px;
     margin-right: 0px;
     display: flex;
@@ -120,18 +104,14 @@ body {
     border: none;
     border-radius: 9px;
     background-color: rgb(6, 232, 198);
-    /* margin-top: 20px;
-    margin-right: 200px; */
 }
 
 .detail_card {
-    /* padding: 10px; */
     padding: 20px 20px;
     display: block;
     background-color: rgb(85, 85, 145);
     height: 100%;
     min-width: 400px;
-    /* width: 30%; */
     border-radius: 20px;
     margin: 20px 0;
     flex-direction: column;
@@ -142,16 +122,14 @@ body {
 .review_card {
     display: inline-block;
     box-sizing: border-box;
-    /* background-color: aquamarine; */
     background-color: rgb(17, 250, 172);
     border-radius: 9px;
     padding: 16px;
     margin: 10px;
     line-height: 30px;
+    height: 320px;
     text-overflow: ellipsis;
-    /* width: 100%; */
-    /* min-width: 500px; */
-    width: auto;
+    width: 470px;
 }
 
 .review_card span {
@@ -244,7 +222,7 @@ body {
     height: 10px;
     width: 100%;
     background-color: rgb(44, 44, 117);
-    transform: rotate(1deg);
+    /* transform: rotate(1deg); */
 }
 
 #review_submit_btn {
@@ -264,5 +242,10 @@ body {
 
 .reviews_and_reviewarea {
     background-color: rgb(17, 53, 53);
-    transform: rotate(1deg);
+    /* transform: rotate(0.2deg); */
+}
+
+.rating_star {
+    align-items: center;
+    margin: 5px 30%;
 }

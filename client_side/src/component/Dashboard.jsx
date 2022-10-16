@@ -2,8 +2,11 @@ import { React, useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { reset, update, getAllusers } from '../reducers/authSlice';
+import Error from './Error';
 
 import './dashboard.css';
+import Loading from './Loading';
+import Success from './Success';
 // import Homepage from './Homepage';
 const Dashboard = () => {
   // const [formdata, setformdata] = useState({
@@ -29,13 +32,13 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (isLoading) {
-      console.log('loading');
+      <Loading />;
     }
     if (isError) {
-      console.log(message);
+      <Error />;
     }
     if (isSuccess) {
-      console.log('success');
+      <Success />;
 
       navigate('/login');
     }
@@ -52,7 +55,7 @@ const Dashboard = () => {
 
   const goTourpage = (e) => {
     e.preventDefault();
-    navigate('/tours');
+    navigate('/');
   };
 
   const onSubmit = (e) => {
@@ -62,7 +65,7 @@ const Dashboard = () => {
     formdata.append('email', document.getElementById('email').value);
     formdata.append('photo', document.getElementById('photo').files[0]);
 
-    console.log(formdata);
+    // console.log(formdata);
 
     dispatch(update(formdata));
   };
@@ -96,7 +99,7 @@ const Dashboard = () => {
                   <Link to=""> Get Tour </Link>{' '}
                 </li>{' '}
                 <li>
-                  <Link to="/tours"> Home </Link>{' '}
+                  <Link to="/"> Home </Link>{' '}
                 </li>
               </ul>{' '}
             </div>{' '}

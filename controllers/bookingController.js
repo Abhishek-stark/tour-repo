@@ -32,7 +32,7 @@ exports.getCheckoutSession = catchAsync(async(req, res, next) => {
         customer_email: req.user.email,
         // success_url: `${YOUR_DOMAIN}/dashboard?success=true`,
         // cancel_url: `${YOUR_DOMAIN}?canceled=true`,
-        success_url: `${YOUR_DOMAIN}/tours?tour=${req.params.tourId}&user=${req.user.id}&price=${tour.price}`,
+        success_url: `${YOUR_DOMAIN}/?tour=${req.params.tourId}&user=${req.user.id}&price=${tour.price}`,
         cancel_url: `${YOUR_DOMAIN}?canceled=true`,
     });
 
@@ -44,10 +44,15 @@ exports.getCheckoutSession = catchAsync(async(req, res, next) => {
 
 exports.createBookingCheckout = catchAsync(async(req, res, next) => {
     const { tour, user, price } = req.query;
-    if (!tour && !user && !price) return next();
-    console.log('working...');
-    await Booking.create({ tour, user, price });
-    res.redirect(`${YOUR_DOMAIN}/tours`);
+    if (!tour && !user && !price) {
+        console.log('error');
+        return next();
+    }
+    if (tour && user && price) {
+        console.log('working...');
+        await Booking.create({ tour, user, price });
+        res.redirect(`${YOUR_DOMAIN}/`);
+    }
 });
 
 exports.createBooking = factory.createOne(Booking);

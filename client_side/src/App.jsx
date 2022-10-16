@@ -46,11 +46,7 @@ function App() {
               exact
               element={<ProtectedRouted Component={AdminPage} />}
             />
-            <Route
-              path="/tours"
-              exact
-              element={<ProtectedRouted Component={Tourpage} />}
-            />
+            <Route path="/" exact element={<Tourpage />} />
             <Route
               path="/useraccount"
               exact

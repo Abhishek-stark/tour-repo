@@ -1,21 +1,5 @@
 /*eslint-disable*/
-// const mongoose = require('mongoose');
 
-// const ReviewSchema = new mongoose.Schema({
-//     description: {
-//         type: String,
-//         minlenth: [20, 'Description must have 20 character'],
-//     },
-//     rating: {
-//         type: Number,
-//         max: 5,
-//     },
-// });
-
-// const Review = mongoose.model('Review', ReviewSchema);
-// module.exports = Review;
-//
-// review / rating / createdAt / ref to tour / ref to user
 const mongoose = require('mongoose');
 const Tour = require('./tourModel');
 
@@ -51,14 +35,6 @@ const reviewSchema = new mongoose.Schema({
 reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
 
 reviewSchema.pre(/^find/, function(next) {
-    // this.populate({
-    //   path: 'tour',
-    //   select: 'name'
-    // }).populate({
-    //   path: 'user',
-    //   select: 'name photo'
-    // });
-
     this.populate({
         path: 'user',
         select: 'name photo',

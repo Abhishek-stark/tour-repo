@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 // import { FaUser } from 'react-icons/fa';
 import './register.css';
 import { register, reset } from '../reducers/authSlice';
+import Error from './Error';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ function Register() {
 
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      <Error />;
     }
 
     if (isSuccess || user) {

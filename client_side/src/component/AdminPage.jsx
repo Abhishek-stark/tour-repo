@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Cookies, useCookies, withCookies } from 'react-cookie';
 // import { reset, getAllusers } from '../reducers/authSlice';
 import './dashboard.css';
+import Error from './Error';
 const AdminPage = () => {
   const name = [];
   const email = [];
@@ -15,13 +16,6 @@ const AdminPage = () => {
   useEffect(() => {
     getallUsers();
   }, []);
-  // let userToken = cookies.get('token');
-  // console.log(req.session.cookie.id);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getAllusers());
-  // }, []);
-  // return this.$store.getters.getToken;
 
   const getallUsers = async () => {
     try {
@@ -29,18 +23,18 @@ const AdminPage = () => {
         headers: {
           Authorization: `Bearer ${token} `,
         },
-        // withCredentials: true,
       });
-      // const response = await axios.get('http://127.0.0.1:8000/api/v1/users');
+
       if (response.data) {
         const { data } = response.data.data;
         localStorage.setItem('userdetail', JSON.stringify(data));
-        console.log(data);
+        // console.log(data);
       }
 
       return response.data;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      <Error />;
     }
   };
   return (

@@ -2,8 +2,9 @@ import { React, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { reset, logout } from '../reducers/authSlice';
-
+import Error from './Error';
 import './homepage.css';
+import Loading from './Loading';
 const Homepage = () => {
   const dispatch = useDispatch();
 
@@ -14,14 +15,14 @@ const Homepage = () => {
 
   useEffect(() => {
     if (isLoading) {
-      console.log('loading');
+      <Loading />;
     }
     if (isError) {
-      console.log(message);
+      <Error />;
     }
     if (isSuccess) {
-      // console.log('success');
-      if (user) navigate('/tours');
+      // if (user) navigate('/tours');
+      if (user) console.log('change here in homepage jsx');
       else navigate('/login');
     }
     dispatch(reset());
@@ -30,7 +31,6 @@ const Homepage = () => {
     e.preventDefault();
 
     dispatch(logout());
-    // navigate('/login');
 
     dispatch(reset());
   };

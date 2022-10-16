@@ -4,6 +4,8 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { login, reset, getAllusers } from '../reducers/authSlice';
+import Loading from './Loading';
+import Error from './Error';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -22,16 +24,14 @@ function Login() {
 
   useEffect(() => {
     if (isError) {
-      console.log('error');
+      <Error />;
     }
 
-    if (isSuccess || user) {
-      navigate('/tours');
+    if (isSuccess) {
+      navigate('/');
     }
 
     if (user && user.role === 'admin') {
-      console.log('this is role with admin');
-
       navigate('/admin');
     }
 
@@ -57,7 +57,7 @@ function Login() {
   };
 
   if (isLoading) {
-    console.log('loading');
+    <Loading />;
   }
 
   return (

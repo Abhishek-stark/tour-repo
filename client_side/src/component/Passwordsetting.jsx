@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './dashboard.css';
 import { reset, updatePassword } from '../reducers/authSlice';
+import Error from './Error';
+import Loading from './Loading';
 const Passwordsetting = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,13 +21,13 @@ const Passwordsetting = () => {
 
   useEffect(() => {
     if (isLoading) {
-      console.log('loading');
+      <Loading />;
     }
     if (isSuccess && user) {
       navigate('/dashboard');
     }
     if (isError) {
-      console.log(message);
+      <Error />;
     }
     dispatch(reset());
   }, [navigate, isError, user, isLoading, isSuccess, message, dispatch]);

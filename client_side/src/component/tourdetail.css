@@ -67,9 +67,9 @@ body {
 }
 
 .tour_images {
-    max-height: 600px;
+    height: 466px;
     border-radius: 10px;
-    width: auto;
+    width: 451px;
     margin: 10px 10px;
     /* object-fit: cover; */
 }
@@ -125,13 +125,11 @@ body {
 }
 
 .detail_card {
-    /* padding: 10px; */
     padding: 20px 20px;
     display: block;
     background-color: rgb(85, 85, 145);
     height: 100%;
     min-width: 400px;
-    /* width: 30%; */
     border-radius: 20px;
     margin: 20px 0;
     flex-direction: column;
@@ -142,16 +140,13 @@ body {
 .review_card {
     display: inline-block;
     box-sizing: border-box;
-    /* background-color: aquamarine; */
     background-color: rgb(17, 250, 172);
     border-radius: 9px;
     padding: 16px;
     margin: 10px;
     line-height: 30px;
     text-overflow: ellipsis;
-    /* width: 100%; */
-    /* min-width: 500px; */
-    width: auto;
+    width: 400px;
 }
 
 .review_card span {
@@ -244,7 +239,6 @@ body {
     height: 10px;
     width: 100%;
     background-color: rgb(44, 44, 117);
-    transform: rotate(1deg);
 }
 
 #review_submit_btn {
@@ -264,5 +258,5 @@ body {
 
 .reviews_and_reviewarea {
     background-color: rgb(17, 53, 53);
-    transform: rotate(1deg);
+    /* transform: rotate(1deg); */
 }

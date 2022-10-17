@@ -10,7 +10,7 @@ const Tour = require('../models/tourModel');
 const Booking = require('../models/bookingModel');
 // const Bookings = require('../models/bookingModel');
 
-const YOUR_DOMAIN = 'http://localhost:3000';
+// const YOUR_DOMAIN = 'http://localhost:3000';
 
 //it's worked for many times
 exports.getCheckoutSession = catchAsync(async(req, res, next) => {

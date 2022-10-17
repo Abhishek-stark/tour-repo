@@ -94,7 +94,6 @@ const Tourdetailpage = () => {
 
     const Id = e.target.getAttribute('data-tourid');
     bookTour(Id);
-    console.log(Id);
   };
 
   return (

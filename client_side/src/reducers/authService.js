@@ -7,7 +7,7 @@ const stripePromise = loadStripe(
 const bookTour = async(tourId) => {
     // 1) Get checkout session from API
     const session = await axios.get(
-        `http://127.0.0.1:8000/api/v1/bookings/checkout-session/${tourId}`
+        `/api/v1/bookings/checkout-session/${tourId}`
     );
     // console.log(session);
     // var url = session.data.url;
@@ -25,7 +25,7 @@ const bookTour = async(tourId) => {
 // Register user
 const register = async(userData) => {
     const response = await axios.post(
-        'http://localhost:8000/api/v1/users/signup',
+        '/api/v1/users/signup',
 
         userData
     );
@@ -38,10 +38,7 @@ const register = async(userData) => {
 };
 
 const update = async(userData) => {
-    const response = await axios.patch(
-        'http://localhost:8000/api/v1/users/updateMe',
-        userData
-    );
+    const response = await axios.patch('/api/v1/users/updateMe', userData);
 
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));
@@ -51,7 +48,7 @@ const update = async(userData) => {
 
 const updatePassword = async(userData) => {
     const response = await axios.patch(
-        'http://localhost:8000/api/v1/users/updateMyPassword',
+        '/api/v1/users/updateMyPassword',
         userData
     );
 
@@ -63,10 +60,7 @@ const updatePassword = async(userData) => {
 
 // Login user
 const login = async(userData) => {
-    const response = await axios.post(
-        'http://localhost:8000/api/v1/users/login',
-        userData
-    );
+    const response = await axios.post('/api/v1/users/login', userData);
 
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));
@@ -80,7 +74,7 @@ const login = async(userData) => {
 //     localStorage.removeItem('user');
 // };
 const logout = async() => {
-    const res = await axios.get('http://localhost:8000/api/v1/users/logout');
+    const res = await axios.get('/api/v1/users/logout');
     if (res.data.status === 'success') {
         // localStorage.removeItem('user');
         // localStorage.removeItem('tours');
@@ -98,7 +92,7 @@ const logout = async() => {
 // };
 
 const getOneTour = async(slug) => {
-    const response = await axios.get('http://localhost:8000/tour' + slug);
+    const response = await axios.get('/tour' + slug);
     if (response.data) {
         // console.log(response.data);
         localStorage.setItem('tourdetail', JSON.stringify(response.data));
@@ -106,14 +100,11 @@ const getOneTour = async(slug) => {
     return response.data;
 };
 const WriteReview = async(data, token) => {
-    const response = await axios.post(
-        'http://127.0.0.1:8000/api/v1/reviews',
-        data, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        }
-    );
+    const response = await axios.post('/api/v1/reviews', data, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     // if (response.data) {
     //     console.log(response.data);
     // }
@@ -121,7 +112,7 @@ const WriteReview = async(data, token) => {
 };
 
 const getAllusers = async() => {
-    const response = await axios.get('http://127.0.0.1:8000/api/v1/users');
+    const response = await axios.get('/api/v1/users');
     // if (response.data) {
     //     console.log(response.data);
     // }

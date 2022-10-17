@@ -29,13 +29,13 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (isLoading) {
-      console.log('loading');
+      navigate('/loading');
     }
     if (isError) {
-      console.log(message);
+      console.log('/error');
     }
     if (isSuccess) {
-      console.log('success');
+      // console.log('success');
 
       navigate('/login');
     }
@@ -62,7 +62,7 @@ const Dashboard = () => {
     formdata.append('email', document.getElementById('email').value);
     formdata.append('photo', document.getElementById('photo').files[0]);
 
-    console.log(formdata);
+    // console.log(formdata);
 
     dispatch(update(formdata));
   };

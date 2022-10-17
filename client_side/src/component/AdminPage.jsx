@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Cookies, useCookies, withCookies } from 'react-cookie';
 // import { reset, getAllusers } from '../reducers/authSlice';
 import './dashboard.css';
 const AdminPage = () => {
+  const navigate = useNavigate();
   const name = [];
   const email = [];
   const photo = [];
@@ -35,12 +37,12 @@ const AdminPage = () => {
       if (response.data) {
         const { data } = response.data.data;
         localStorage.setItem('userdetail', JSON.stringify(data));
-        console.log(data);
+        // console.log(data);
       }
 
       return response.data;
     } catch (error) {
-      console.log(error);
+      navigate('/error');
     }
   };
   return (

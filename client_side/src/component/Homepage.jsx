@@ -14,10 +14,10 @@ const Homepage = () => {
 
   useEffect(() => {
     if (isLoading) {
-      console.log('loading');
+      navigate('/loading');
     }
     if (isError) {
-      console.log(message);
+      navigate('/error');
     }
     if (isSuccess) {
       // console.log('success');

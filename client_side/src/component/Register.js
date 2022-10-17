@@ -25,7 +25,7 @@ function Register() {
 
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      navigate('/error');
     }
 
     if (isSuccess || user) {

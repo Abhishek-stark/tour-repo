@@ -15,24 +15,25 @@ const userRouter = require('./routes/userRoutes');
 const viewRoutes = require('./routes/viewRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
-const app = express();
 const cookieparser = require('cookie-parser');
 const path = require('path');
 const { urlencoded } = require('body-parser');
-// app.set('view engine', 'pug');
-// app.set('views', path.join(__dirname, 'views'));
+const app = express();
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
+app.options('*', cors());
 
 // 1) GLOBAL MIDDLEWARES
 // Set security HTTP headers
 app.use(helmet());
-app.use(
-    cors({
-        origin: 'http://localhost:3000',
-        credentials: true,
-        exposedHeaders: ['Set-Cookie', 'Date', 'ETag'],
-    })
-);
+// app.use(
+//     cors({
+//         origin: `${req.protocols}://${req.get('host')}`,
+//         credentials: true,
+//         exposedHeaders: ['Set-Cookie', 'Date', 'ETag'],
+//     })
+// );
 // x=
 // Development logging
 if (process.env.NODE_ENV === 'development') {
@@ -70,9 +71,7 @@ app.use(
         ],
     })
 );
-
-// Serving static files
-// app.use(express.static(`${__dirname}/public`));
+app.use(compression());
 
 // Test middleware
 app.use((req, res, next) => {

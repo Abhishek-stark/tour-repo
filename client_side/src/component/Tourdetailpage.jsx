@@ -1,16 +1,16 @@
 import { React, useState } from 'react';
 
 import './tourdetail.css';
-
+import { useNavigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
 
 const Tourdetailpage = () => {
+  const navigate = useNavigate();
   const tourdetail = JSON.parse(localStorage.getItem('tourdetail'));
   const user = JSON.parse(localStorage.getItem('user'));
-  let token = user.token;
+
   const [writeReview, setwriteReview] = useState(true);
   const [reviewdata, setreviewdata] = useState({
     review: '',
@@ -30,6 +30,7 @@ const Tourdetailpage = () => {
   };
 
   const writeReviews = async (data) => {
+    let token = user.token;
     try {
       const response = await axios.post(
         'http://127.0.0.1:8000/api/v1/reviews',
@@ -40,11 +41,11 @@ const Tourdetailpage = () => {
           },
         }
       );
-      // console.log(response.status);
+      console.log(response.data);
 
       return response;
     } catch (error) {
-      Navigate('/error');
+      navigate('/error');
     }
   };
   const onSubmitreview = (e) => {
@@ -61,18 +62,14 @@ const Tourdetailpage = () => {
   };
   let i = 0;
 
-  // const stripePromise =loadStripe(
-  //   'pk_test_51LhXM5SBrxf9grZuKlaBjNwd4LPft9O4c06bUKX8eBsgSBgcxaxMcm2jDFZZtTcRmVitjammnAkHhD19KLepU0ns00ZPAKOmmI'
-  // );
-
   const bookTour = async (tourId) => {
-    // const user = JSON.parse(localStorage.getItem('user'));
+    let token = user.token;
 
     try {
       const stripePromise = await loadStripe(
         'pk_test_51LhXM5SBrxf9grZuKlaBjNwd4LPft9O4c06bUKX8eBsgSBgcxaxMcm2jDFZZtTcRmVitjammnAkHhD19KLepU0ns00ZPAKOmmI'
       );
-      // 1) Get checkout session from API
+
       const session = await axios.get(
         `http://127.0.0.1:8000/api/v1/bookings/checkout-session/${tourId}`,
         {
@@ -82,15 +79,13 @@ const Tourdetailpage = () => {
         }
       );
 
-      // var url = session.data.url;
-      // navigate(`${url}`);
       const stripe = await stripePromise;
       await stripe.redirectToCheckout({
         sessionId: session.data.session.id,
       });
       return session;
     } catch (err) {
-      Navigate('/error');
+      navigate('/error');
     }
   };
 

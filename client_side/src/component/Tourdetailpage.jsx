@@ -5,6 +5,7 @@ import './tourdetail.css';
 import { loadStripe } from '@stripe/stripe-js';
 
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 const Tourdetailpage = () => {
   const tourdetail = JSON.parse(localStorage.getItem('tourdetail'));
@@ -39,11 +40,11 @@ const Tourdetailpage = () => {
           },
         }
       );
-      console.log(response.status);
+      // console.log(response.status);
 
       return response;
     } catch (error) {
-      console.log(error);
+      Navigate('/error');
     }
   };
   const onSubmitreview = (e) => {
@@ -89,7 +90,7 @@ const Tourdetailpage = () => {
       });
       return session;
     } catch (err) {
-      console.log(err);
+      Navigate('/error');
     }
   };
 

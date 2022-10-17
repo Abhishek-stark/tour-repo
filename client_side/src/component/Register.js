@@ -46,7 +46,7 @@ function Register() {
     e.preventDefault();
 
     if (password !== passwordConfirm) {
-      console.log('Passwords do not match');
+      navigate('/error');
     } else {
       const userData = {
         name,
@@ -60,7 +60,7 @@ function Register() {
   };
 
   if (isLoading) {
-    return console.log('loading');
+    navigate('/loading');
   }
 
   return (

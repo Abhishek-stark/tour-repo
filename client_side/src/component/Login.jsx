@@ -22,15 +22,15 @@ function Login() {
 
   useEffect(() => {
     if (isError) {
-      console.log('error');
+      navigate('/error');
     }
 
     if (isSuccess || user) {
-      navigate('/tours');
+      navigate('/');
     }
 
     if (user && user.role === 'admin') {
-      console.log('this is role with admin');
+      // console.log('this is role with admin');
 
       navigate('/admin');
     }
@@ -57,7 +57,7 @@ function Login() {
   };
 
   if (isLoading) {
-    console.log('loading');
+    navigate('/loading');
   }
 
   return (

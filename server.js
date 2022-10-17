@@ -11,7 +11,8 @@ process.on('uncaughtException', (err) => {
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-const DB = 'mongodb://localhost:27017/';
+// const DB = 'mongodb://localhost:27017/';
+const DB = process.env.MongoDb_pass;
 
 mongoose
     .connect(DB, {

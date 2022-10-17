@@ -4,7 +4,7 @@ const Useraccount = () => {
   const item = localStorage.getItem('user');
   const user = JSON.parse(item);
 
-  console.log(document.cookie);
+  // console.log(document.cookie);
 
   return (
     <div>

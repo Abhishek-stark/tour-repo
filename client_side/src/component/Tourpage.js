@@ -1,9 +1,10 @@
 import { React, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import './tourpage.css';
 import axios from 'axios';
+import Unauthorized from './Unauthorized';
 
 const Tourpage = () => {
   const [tour, settour] = useState();
@@ -23,16 +24,14 @@ const Tourpage = () => {
         // console.log(response.data.tours);
       }
     } catch (err) {
-      console.log(err);
+      navigate('/error');
     }
   };
   useEffect(() => {
-    if (user) {
-      getTour();
-    }
+    getTour();
   }, []);
 
-  if (user && tour) {
+  if (tour) {
     return (
       <div className="banner_container">
         <div className="banner">
@@ -63,7 +62,6 @@ const Tourpage = () => {
                 <div className="details">
                   <div id="price_and_rating">
                     <span>
-                      {' '}
                       {tour.price}
                       Rs / per person
                     </span>
@@ -79,36 +77,28 @@ const Tourpage = () => {
                         const response = await axios.get(
                           `http://localhost:8000/tour/${tour.slug}`
                         );
-                        if (response) {
-                          // console.log(response);
-
+                        if (response && user) {
                           localStorage.setItem(
                             'tourdetail',
                             JSON.stringify(response.data)
                           );
                           navigate('/tourdetail');
+                        } else {
+                          navigate('/unauthorized');
                         }
                       } catch (err) {
                         console.log(err);
                       }
                     }}
                   >
-                    Details{' '}
-                  </button>{' '}
-                </div>{' '}
+                    Details
+                  </button>
+                </div>
               </div>
             );
           })}{' '}
         </div>{' '}
       </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <>
-        <h1> you are not login Please Login to Book your Tour </h1>{' '}
-      </>
     );
   }
 };

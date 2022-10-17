@@ -100,7 +100,7 @@ const logout = async() => {
 const getOneTour = async(slug) => {
     const response = await axios.get('http://localhost:8000/tour' + slug);
     if (response.data) {
-        console.log(response.data);
+        // console.log(response.data);
         localStorage.setItem('tourdetail', JSON.stringify(response.data));
     }
     return response.data;
@@ -114,17 +114,17 @@ const WriteReview = async(data, token) => {
             },
         }
     );
-    if (response.data) {
-        console.log(response.data);
-    }
+    // if (response.data) {
+    //     console.log(response.data);
+    // }
     return response.data;
 };
 
 const getAllusers = async() => {
     const response = await axios.get('http://127.0.0.1:8000/api/v1/users');
-    if (response.data) {
-        console.log(response.data);
-    }
+    // if (response.data) {
+    //     console.log(response.data);
+    // }
     return response.data;
 };
 

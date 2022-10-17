@@ -11,10 +11,12 @@ import Tourpage from './component/Tourpage';
 import axios from 'axios';
 import Tourdetailpage from './component/Tourdetailpage';
 import Passwordsetting from './component/Passwordsetting';
-
+import Loading from './component/Loading';
+import Error from './component/Error';
 import ProtectedRouted from './component/ProtectedRouted';
 import Nopage from './component/Nopage';
 import AdminPage from './component/AdminPage';
+import Unauthorized from './component/Unauthorized';
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -41,16 +43,15 @@ function App() {
               exact
               element={<ProtectedRouted Component={Login} />}
             />
+            <Route path="/unauthorized" element={<Unauthorized />} />
+            <Route path="/error" element={<Error />} />
+            <Route path="/loading" element={<Loading />} />
             <Route
               path="/admin"
               exact
               element={<ProtectedRouted Component={AdminPage} />}
             />
-            <Route
-              path="/tours"
-              exact
-              element={<ProtectedRouted Component={Tourpage} />}
-            />
+            <Route path="/" exact element={<Tourpage />} />
             <Route
               path="/useraccount"
               exact
@@ -70,9 +71,9 @@ function App() {
               // element={<Tourdetailpage />}
             />
             <Route path="/*" element={<Nopage />} />
-          </Routes>{' '}
-        </div>{' '}
-      </Router>{' '}
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }

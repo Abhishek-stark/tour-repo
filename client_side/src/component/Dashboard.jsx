@@ -52,7 +52,7 @@ const Dashboard = () => {
 
   const goTourpage = (e) => {
     e.preventDefault();
-    navigate('/tours');
+    navigate('/');
   };
 
   const onSubmit = (e) => {
@@ -96,7 +96,7 @@ const Dashboard = () => {
                   <Link to=""> Get Tour </Link>{' '}
                 </li>{' '}
                 <li>
-                  <Link to="/tours"> Home </Link>{' '}
+                  <Link to="/"> Home </Link>{' '}
                 </li>
               </ul>{' '}
             </div>{' '}

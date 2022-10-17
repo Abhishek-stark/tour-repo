@@ -19,13 +19,13 @@ const Passwordsetting = () => {
 
   useEffect(() => {
     if (isLoading) {
-      console.log('loading');
+      navigate('/loading');
     }
     if (isSuccess && user) {
       navigate('/dashboard');
     }
     if (isError) {
-      console.log(message);
+      navigate('/error');
     }
     dispatch(reset());
   }, [navigate, isError, user, isLoading, isSuccess, message, dispatch]);

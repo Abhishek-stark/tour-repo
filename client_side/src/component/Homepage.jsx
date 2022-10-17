@@ -21,7 +21,7 @@ const Homepage = () => {
     }
     if (isSuccess) {
       // console.log('success');
-      if (user) navigate('/tours');
+      if (user) navigate('/');
       else navigate('/login');
     }
     dispatch(reset());

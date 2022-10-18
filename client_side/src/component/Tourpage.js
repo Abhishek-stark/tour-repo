@@ -16,7 +16,7 @@ const Tourpage = () => {
   const { user } = useSelector((state) => state.auth);
   const getTour = async () => {
     try {
-      const response = await axios.get('/api/v1/tours');
+      const response = await axios.get(' http://localhost:8000/api/v1/tours');
       if (response.data) {
         // localStorage.setItem('tours', JSON.stringify(response.data));
         settour(response.data.tours);
@@ -74,7 +74,9 @@ const Tourpage = () => {
                     onClick={async (e) => {
                       e.preventDefault();
                       try {
-                        const response = await axios.get(`/tour/${tour.slug}`);
+                        const response = await axios.get(
+                          ` http://localhost:8000/tour/${tour.slug}`
+                        );
                         if (response && user) {
                           localStorage.setItem(
                             'tourdetail',

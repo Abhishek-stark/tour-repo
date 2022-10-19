@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
 const usertoken = localStorage.getItem('user');
-const token = usertoken.token;
+if (usertoken) {
+    var token = usertoken.token;
+}
+
 const stripePromise = loadStripe(
     'pk_test_51LhXM5SBrxf9grZuKlaBjNwd4LPft9O4c06bUKX8eBsgSBgcxaxMcm2jDFZZtTcRmVitjammnAkHhD19KLepU0ns00ZPAKOmmI'
 );

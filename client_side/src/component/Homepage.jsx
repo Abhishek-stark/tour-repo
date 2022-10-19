@@ -21,8 +21,9 @@ const Homepage = () => {
     }
     if (isSuccess) {
       // console.log('success');
-      if (user) navigate('/');
-      else navigate('/login');
+      // if (user) navigate('/');
+      // else navigate('/login');
+      navigate('/');
     }
     dispatch(reset());
   }, [user, isLoading, isError, isSuccess, message, dispatch, navigate]);

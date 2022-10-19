@@ -84,7 +84,7 @@ const Tourpage = () => {
                           );
                           navigate('/tourdetail');
                         } else {
-                          navigate('/unauthorized');
+                          navigate('/');
                         }
                       } catch (err) {
                         console.log(err);

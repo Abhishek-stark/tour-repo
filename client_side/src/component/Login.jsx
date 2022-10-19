@@ -22,7 +22,8 @@ function Login() {
 
   useEffect(() => {
     if (isError) {
-      navigate('/error');
+      // navigate('/error');
+      console.log('error');
     }
 
     if (isSuccess || user) {

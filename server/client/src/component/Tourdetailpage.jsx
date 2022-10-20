@@ -32,15 +32,11 @@ const Tourdetailpage = () => {
   const writeReviews = async (data) => {
     let token = user.token;
     try {
-      const response = await axios.post(
-        'http://127.0.0.1:8000/api/v1/reviews',
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.post('/api/v1/reviews', data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       console.log(response.data);
 
       return response;
@@ -71,7 +67,7 @@ const Tourdetailpage = () => {
       );
 
       const session = await axios.get(
-        `http://127.0.0.1:8000/api/v1/bookings/checkout-session/${tourId}`,
+        `/api/v1/bookings/checkout-session/${tourId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

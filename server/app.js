@@ -20,20 +20,21 @@ const path = require('path');
 const { urlencoded } = require('body-parser');
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 // app.use(cors());
 // app.options('*', cors());
 
 // 1) GLOBAL MIDDLEWARES
 // Set security HTTP headers
 app.use(helmet());
-app.use(
-    cors({
-        origin: 'http://localhost:3000',
-        credentials: true,
-        exposedHeaders: ['Set-Cookie', 'Date', 'ETag'],
-    })
-);
+app.use(cors());
+// app.use(
+//     cors({
+//         origin: 'http://localhost:3000',
+//         credentials: true,
+//         exposedHeaders: ['Set-Cookie', 'Date', 'ETag'],
+//     })
+// );
 // x=
 // Development logging
 if (process.env.NODE_ENV === 'development') {

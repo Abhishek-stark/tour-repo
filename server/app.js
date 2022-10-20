@@ -18,7 +18,8 @@ const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 const cookieparser = require('cookie-parser');
 const path = require('path');
-const dotenv = require('dotenv').config({ path: './config.env' });
+// const dotenv = require('dotenv').config({ path: './config.env' });
+// { path: './config.env' }
 const { urlencoded } = require('body-parser');
 const app = express();
 

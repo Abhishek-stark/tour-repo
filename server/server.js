@@ -1,14 +1,16 @@
 /*eslint-disable*/
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 
 process.on('uncaughtException', (err) => {
     console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
     console.log(err.name, err.message);
     process.exit(1);
 });
-
-dotenv.config({ path: './config.env' });
+if (app.get('env') == 'development') {
+    require('dotenv').config({ path: './config.env' });
+}
+// dotenv.config({ path: './config.env' });
 const app = require('./app');
 
 // const DB = 'mongodb://localhost:27017/';

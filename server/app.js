@@ -1,6 +1,7 @@
 /*eslint-disable*/
 const express = require('express');
 const morgan = require('morgan');
+
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -17,6 +18,7 @@ const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 const cookieparser = require('cookie-parser');
 const path = require('path');
+const dotenv = require('dotenv').config({ path: './config.env' });
 const { urlencoded } = require('body-parser');
 const app = express();
 
@@ -72,7 +74,7 @@ app.use(
         ],
     })
 );
-// app.use(compression());
+app.use(compression());
 
 // Test middleware
 app.use((req, res, next) => {

@@ -1,4 +1,5 @@
 /*eslint-disable*/
+const express = require('express');
 const mongoose = require('mongoose');
 // const dotenv = require('dotenv');
 
@@ -7,11 +8,11 @@ process.on('uncaughtException', (err) => {
     console.log(err.name, err.message);
     process.exit(1);
 });
+const app = require('./app');
 if (app.get('env') == 'development') {
     require('dotenv').config({ path: './config.env' });
 }
 // dotenv.config({ path: './config.env' });
-const app = require('./app');
 
 // const DB = 'mongodb://localhost:27017/';
 const DB = process.env.MongoDb_pass;
@@ -28,7 +29,10 @@ mongoose
 const port = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV == 'production') {
-    app.use(express.static('/client/build'));
+    app.use(express.static('client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
 }
 const server = app.listen(port, () => {
     console.log(`App running on port ${port}...`);
